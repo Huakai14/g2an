@@ -6,6 +6,8 @@ import Sidebar from '../components/sidebar'
 import ServiceDataChart from '../components/ServiceDataChart';
 import ServiceInStopChart from '../components/ServiceInStopChart';
 import SpeedChart from '../components/SpeedChart';
+import Headway from '../components/Headway';
+import RelationChart from '../components/RelationChart';
 
 const Summary = () => {
 
@@ -103,7 +105,7 @@ const Summary = () => {
                             <div className="text-base font-bold mt-8">
                               <p>Headway</p>
                               <div className="flex justify-center items-center min-h-[500px]">
-                                <ServiceDataChart />
+                                <Headway />
                               </div>
                             </div>
                         )}
@@ -116,10 +118,10 @@ const Summary = () => {
                             </div>
                         )}
                         {isRelation && (
-                            <div className="text-base font-bold mt-8">
-                              <p>relation between stops and routes</p>
+                            <div>
+                              <p className="text-base font-bold mt-8">relation between stops and routes</p>
                               <div className="flex justify-center items-center min-h-[500px]">
-                                <ServiceDataChart />
+                                <RelationChart />
                               </div>
                             </div>
                         )}

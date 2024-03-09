@@ -19,12 +19,12 @@ const Headway = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`${BASE_URL}/analyst`);
+            const response = await fetch(`${BASE_URL}/headway`);
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            setHeadwayData(data.service_rate); // Update state with fetched data
+            setHeadwayData(data.headway); // Update state with fetched data
           } catch (error) {
             console.error("Fetching data failed", error);
           }
@@ -38,19 +38,19 @@ const Headway = () => {
         datasets: [
           {
             label: 'min',
-            data: headwayData?.map(entry => entry?.min), // Use 'mean' for data points
+            data: headwayData?.map(entry => entry?.min_headway), // Use 'mean' for data points
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgba(75, 192, 192, 0.5)',
           },
           {
             label: 'avg',
-            data: headwayData?.map(entry => entry?.mean), // Use 'mean' for data points
+            data: headwayData?.map(entry => entry?.mean_headway), // Use 'mean' for data points
             borderColor: 'rgb(255, 0, 0)',
             backgroundColor: 'rgba(255, 0, 0, 0.5)',
           },
           {
             label: 'avg',
-            data: headwayData?.map(entry => entry?.max), // Use 'mean' for data points
+            data: headwayData?.map(entry => entry?.max_headway), // Use 'mean' for data points
             borderColor: 'rgb(255, 255, 0)',
             backgroundColor: 'rgba(255, 255, 0, 0.5)',
           }

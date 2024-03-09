@@ -1,6 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import world from './world.svg';
-const g2an_upload = () => {
+const G2AnUpload = () => {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const navigate = useNavigate(); // Initialize useNavigate hook
+
+    // Function to handle file selection
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]); // Update the state with the selected file
+    };
+
+    useEffect(() => {
+        // Function to upload the file
+        const uploadFile = async () => {
+        if (selectedFile) {
+            const formData = new FormData();
+            formData.append('file', selectedFile); // Append the selected file to the form data
+
+            try {
+            const response = await fetch('http://127.0.0.1:8000/', {
+                method: 'POST',
+                body: formData, // Send the form data
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // File uploaded successfully, navigate to /summary
+            navigate('/summary');
+            } catch (error) {
+                console.error("Error uploading file:", error);
+                alert("Error uploading file: " + error.message);
+            }
+        }
+        };
+
+        uploadFile();
+    }, [selectedFile, navigate]);
     
   return (
     <section className='flex h-screen w-screen'>
@@ -50,7 +86,7 @@ const g2an_upload = () => {
                             data-original="#000000" />
                         </svg>
                             Choose file to Upload
-                        <input type="file" id='uploadFile1' className="hidden" />
+                        <input type="file" id='uploadFile1' className="hidden" accept=".zip" onChange={handleFileChange}/>
                     </label>
                     <div className="flex items-center py-8">
                         <div className="flex-grow flex justify-end">
@@ -63,10 +99,10 @@ const g2an_upload = () => {
                     </div>
                     <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-auto mb-16">
                         <option selected>Select sample GTPS data</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
+                        <option value="1">select 1</option>
+                        <option value="2">select 2</option>
+                        <option value="3">select 3</option>
+                        <option value="4">select 4</option>
                     </select>
                 </div>
             </div>
@@ -75,4 +111,4 @@ const g2an_upload = () => {
   )
 }
 
-export default g2an_upload
+export default G2AnUpload

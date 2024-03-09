@@ -24,7 +24,7 @@ const SpeedChart = () => {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            setSpeedData(data.service_rate); // Update state with fetched data
+            setSpeedData(data.speed); // Update state with fetched data
           } catch (error) {
             console.error("Fetching data failed", error);
           }
