@@ -15,7 +15,7 @@ ChartJS.register(
 
 const ServiceInStopChart = () => {
   const [serviceInStopData, setServiceInStopData] = useState([]);
-  const BASE_URL = import.meta.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
     
 
   useEffect(() => {

@@ -17,7 +17,7 @@ def delete_gtfs_except_zip(folder_path, except_filename):
 
 def main():
     # Unzip the file
-    path=r'C:/Users/USER/Desktop/G2An-main-2/back_end/testzip'
+    path=r'C:/Users/USER/Desktop/g2an_project/g2an/G2An-main-2/back_end/gtfsFile'
     # delete_gtfs_except_zip(path, 'gtfs.zip')
     unzipfile(path)
     # Run the FastAPI application

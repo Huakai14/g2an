@@ -3,7 +3,7 @@ from io import StringIO
 from datetime import datetime
 import pandas as pd
 
-path = r'C:/Users/USER/Desktop/G2An-main-2/back_end/gtfsFile'
+path = r'C:/Users/USER/Desktop/g2an_project/g2an/G2An-main-2/back_end/gtfsFile'
 os.chdir(path)
 os.listdir()
 

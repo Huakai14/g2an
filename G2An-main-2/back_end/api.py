@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI,HTTPException
 from relation_stop_trip import stop_in_tripForAPI
 from route_in_trip import routes_in_tripForAPI
