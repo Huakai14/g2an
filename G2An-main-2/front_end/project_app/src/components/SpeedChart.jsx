@@ -34,23 +34,23 @@ const SpeedChart = () => {
         fetchData();
       }, []);
       const speedChartData = {
-        labels: speedData?.map(entry => entry?.hour.toString()), // Use the 'year' property for labels
+        labels: speedData?.map(entry => entry?.hour.toString()), 
         datasets: [
           {
             label: 'min',
-            data: speedData?.map(entry => entry?.min_speed), // Use 'mean' for data points
+            data: speedData?.map(entry => entry?.min_speed), 
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgba(75, 192, 192, 0.5)',
           },
           {
             label: 'avg',
-            data: speedData?.map(entry => entry?.mean_speed), // Use 'mean' for data points
+            data: speedData?.map(entry => entry?.mean_speed), 
             borderColor: 'rgb(255, 0, 0)',
             backgroundColor: 'rgba(255, 0, 0, 0.5)',
           },
           {
             label: 'max',
-            data: speedData?.map(entry => entry?.max_speed), // Use 'mean' for data points
+            data: speedData?.map(entry => entry?.max_speed),
             borderColor: 'rgb(255, 255, 0)',
             backgroundColor: 'rgba(255, 255, 0, 0.5)',
           }
