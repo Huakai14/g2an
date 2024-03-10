@@ -27,6 +27,7 @@ const G2AnUpload = () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             // File uploaded successfully, navigate to /summary
+            alert("File uploaded successfully");
             navigate('/summary');
             } catch (error) {
                 console.error("Error uploading file:", error);
