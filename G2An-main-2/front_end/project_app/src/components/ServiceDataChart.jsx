@@ -65,7 +65,7 @@ const ServiceDataChart = () => {
         }
       };    
   return (
-    <div className='' style={{ width: '1200px', height: '500px' }}>
+    <div className='' style={{ width: '1200px', height: '300px' }}>
         <Bar data={serviceData} options={options} />
     </div>
   )

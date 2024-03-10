@@ -19,7 +19,7 @@ const SpeedChart = () => {
         // Define the function to fetch data
         const fetchData = async () => {
           try {
-            const response = await fetch(`${BASE_URL}/`);
+            const response = await fetch(`${BASE_URL}/speed`);
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -65,9 +65,9 @@ const SpeedChart = () => {
         }
       };    
   return (
-    <>
+    <div className='' style={{ width: '1200px', height: '300px' }}>
         <Bar data={speedChartData} options={options} />
-    </>
+    </div>
   )
 }
 

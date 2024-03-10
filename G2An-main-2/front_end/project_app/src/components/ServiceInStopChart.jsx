@@ -79,7 +79,11 @@ const ServiceInStopChart = () => {
     },
   };
 
-  return <Bar options={options} data={chartData} />;
+  return (
+    <div className='' style={{ width: '1200px', height: '300px' }}>
+      <Bar options={options} data={chartData} />
+    </div>
+  );
 };
 
 export default ServiceInStopChart;

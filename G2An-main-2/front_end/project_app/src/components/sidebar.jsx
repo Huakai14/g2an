@@ -2,18 +2,53 @@ import React, { useState, useEffect } from 'react';
 
 const Sidebar = ({ isServicerate, onToggleServicerate,isSpeed,onToggleSpeed,isHeadway,onToggleHeadway,isServicein,onToggleServicein,isRelation,onToggleRelation }) => {
     const [selectedDate, setSelectedDate] = useState(''); // State to store the selected date
+    const [minDate, setMinDate] = useState('');
+    const [maxDate, setMaxDate] = useState('');
 
     // Function to update the selected date
     const handleDateChange = (event) => {
       setSelectedDate(event.target.value);
+      if(isSpeed){
+        onToggleSpeed(false);
+      }
+      if(isServicerate){
+        onToggleServicerate(false);
+      }
+      if(isHeadway){
+        onToggleHeadway(false);
+      }
+      if(isServicein){
+        onToggleServicein(false);
+      }
+      if(isRelation){
+        onToggleRelation(false);
+      }
     };
+
+    useEffect(() => {
+      const fetchDateRange = async () => {
+          try {
+              const response = await fetch('http://127.0.0.1:8000/range_date');
+              if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              const data = await response.json();
+              setMinDate(data.range_date.start_date);
+              setMaxDate(data.range_date.end_date);
+          } catch (error) {
+              console.error("Error fetching date range:", error);
+          }
+      };
+
+      fetchDateRange();
+  }, []);
   
     // useEffect hook to submit the date to your API when selectedDate changes
     useEffect(() => {
       const submitDate = async () => {
         if (selectedDate) { // Check if selectedDate is not empty
           try {
-            const response = await fetch('http://127.0.0.1:8000/', {
+            const response = await fetch('http://127.0.0.1:8000/time', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -26,6 +61,7 @@ const Sidebar = ({ isServicerate, onToggleServicerate,isSpeed,onToggleSpeed,isHe
             }
   
             const data = await response.json();
+            alert("Date submitted successfully!");
             console.log(data);
           } catch (error) {
             console.error("Error submitting date:", error);
@@ -41,6 +77,8 @@ const Sidebar = ({ isServicerate, onToggleServicerate,isSpeed,onToggleSpeed,isHe
                         type="date"
                         value={selectedDate}
                         onChange={handleDateChange}
+                        min={minDate}
+                        max={maxDate}
                         className="mt-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                     <div className="mt-10 bg-white shadow-2xl rounded-lg pb-40">

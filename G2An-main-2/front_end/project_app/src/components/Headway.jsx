@@ -65,9 +65,9 @@ const Headway = () => {
         }
       };    
   return (
-    <>
+    <div className='' style={{ width: '1200px', height: '300px' }}>
         <Bar data={headwaychartData} options={options} />
-    </>
+    </div>
   )
 }
 

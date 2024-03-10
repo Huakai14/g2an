@@ -88,7 +88,7 @@ const Summary = () => {
                         {isServicerate && (
                             <div className="text-base font-bold">
                                 <p>Service rate</p>
-                                <div className="flex justify-center items-center">
+                                <div className="flex justify-center items-center max-h-[500px]">
                                   <ServiceDataChart />
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ const Summary = () => {
                         {isSpeed && (
                             <div className="text-base font-bold mt-8">
                               <p>Speed</p>
-                              <div className="flex justify-center items-center min-h-[500px]">
+                              <div className="flex justify-center items-center max-h-[500px]">
                                 <SpeedChart />
                               </div>
                             </div>
