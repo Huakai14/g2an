@@ -77,6 +77,8 @@ const ServiceInStopChart = () => {
         },
       },
     },
+    maintainAspectRatio: true, // Ensure the aspect ratio is maintained
+    aspectRatio: 4 // Adjust this value to change the aspect ratio (width / height)
   };
 
   return (
